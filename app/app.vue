@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Search, ArrowUpRight, ChevronDown, ChevronRight, RefreshCw, Swords, LayoutDashboard, Users, Gem, Radio, BookOpen, X, SlidersHorizontal, ExternalLink, Trophy, Activity, Target, Eye, Crosshair, Menu, Download } from 'lucide-vue-next'
-import { demoProfile, demoMatches } from '../shared/demo'
+import { demoProfile, demoMatches } from '#shared/demo'
 const tab=ref('overview'), query=ref(''),region=ref('euw1'),busy=ref(false),error=ref(''),demo=ref(true),profile=ref<any>(demoProfile),matches=ref<any[]>(demoMatches),queue=ref('all'),expanded=ref(''),next=ref(0),hasMore=ref(false),mobile=ref(false)
 const catalogQuery=ref(''),role=ref('all'),selected=ref<any>(null),detail=ref<any>(null),detailBusy=ref(false),detailError=ref(''),extra=ref<any>(null),extraBusy=ref(false),extraError=ref(''),timeline=ref<any>(null)
 const {data:version}=await useFetch<any>('/api/catalog?kind=version')

@@ -71,3 +71,8 @@ Non essendo stata fornita una API key reale, le chiamate autenticate non sono st
 - https://ddragon.leagueoflegends.com/api/versions.json
 
 Rift Recap is not endorsed by Riot Games and does not reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games and all associated properties are trademarks or registered trademarks of Riot Games, Inc.
+
+
+### Fix Netlify: import della demo
+
+La demo condivisa viene importata tramite l’alias Nuxt 4 `#shared/demo` (file `shared/demo.ts`), così il bundler Nitro risolve il modulo condiviso correttamente nel build server. Assicurati di committare anche `shared/demo.ts` nel repository Git.
