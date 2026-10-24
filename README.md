@@ -19,7 +19,7 @@ Per aggiornare il catalogo ufficiale prima di ricompilare:
 node scripts/sync-data.mjs
 ```
 
-`npm run typecheck` verifica TypeScript. `npm run build` genera un Cloudflare Worker ESM in `dist/server/index.js` e gli asset in `dist/client`. Per un server Node puoi compilare con `NITRO_PRESET=node-server npx nuxt build` e avviare `node .output/server/index.mjs`.
+`npm run typecheck` verifica TypeScript. `npm run build` compila l’app Nuxt/Nitro. La configurazione rileva Netlify (`NETLIFY`) e genera il runtime serverless necessario alle API `/api/*`; in locale e su Cloudflare mantiene il preset Cloudflare. Su Netlify usa il comando `npm run build`, directory pubblica `.output/public` e Node 22. Imposta `NUXT_RIOT_API_KEY` nelle variabili d’ambiente di Netlify se vuoi cercare profili reali.
 
 ## Configurazione Riot
 
