@@ -1,0 +1,1 @@
+export default defineCachedEventHandler(async event=>{const q=getQuery(event),id=String(q.id||''),version=String(q.version||'');if(!/^[A-Za-z0-9]+$/.test(id)||!/^\d+\.\d+\.\d+$/.test(version))throw createError({statusCode:400});return $fetch(`https://ddragon.leagueoflegends.com/cdn/${version}/data/it_IT/champion/${id}.json`,{timeout:15000})},{maxAge:86400})
