@@ -4,7 +4,7 @@ const cache = new Map<string,{ expires:number, data:unknown }>()
 let blockedUntil = 0
 export function regionOf(value: unknown) { const p=String(value||'euw1').toLowerCase(); if(!platforms[p]) throw createError({statusCode:400,statusMessage:'Regione non valida'}); return p }
 export async function riot<T=any>(event:H3Event, host:string, path:string, ttl=60):Promise<T> {
- const key = useRuntimeConfig(event).riotApiKey || event.context.cloudflare?.env?.NUXT_RIOT_API_KEY
+ const key = useRuntimeConfig(event).riotApiKey || process.env.NUXT_RIOT_API_KEY || event.context.cloudflare?.env?.NUXT_RIOT_API_KEY
  if(!key) throw createError({statusCode:503,statusMessage:'Configura NUXT_RIOT_API_KEY sul server per cercare giocatori reali.'})
  const id=host+path; const hit=cache.get(id); if(hit && hit.expires>Date.now()) return hit.data as T
  if(blockedUntil>Date.now()) { setHeader(event,'Retry-After',Math.ceil((blockedUntil-Date.now())/1000)); throw createError({statusCode:429,statusMessage:'Limite Riot raggiunto. Riprova tra poco.'}) }
